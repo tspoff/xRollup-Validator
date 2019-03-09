@@ -1,0 +1,4 @@
+node_modules
+server/build
+logfile.log
+.env
