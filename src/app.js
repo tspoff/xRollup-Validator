@@ -82,6 +82,13 @@ var server = jayson.server({
                     S: params.S
                 });
                 break;
+            case "deposit":
+                result = stateManager.transfer({
+                    publicKey: params.publicKey,
+                    ethereumAddress: params.ethereumAddress,
+                    tokenId: tokenId,
+                    amount: amount,
+                });
             default:
                 result = "unknown";
                 break;

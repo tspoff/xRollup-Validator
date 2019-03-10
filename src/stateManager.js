@@ -8,6 +8,10 @@ module.exports = class StateManager {
         this.nonces = {};
         this.tokenBalances = {};
 
+        this.depositAmounts = [];
+        this.depositPubkeys = [];
+        this.depositTokenIds = [];
+
         var data = {
             pubkey: "",
             token_balance_from: "",
@@ -122,6 +126,8 @@ module.exports = class StateManager {
             from: params.pubkey,
             amount: params.amount,
         });
+
+        return true;
     }
 
     withdraw(tokenId, to, amount) {
@@ -153,7 +159,6 @@ module.exports = class StateManager {
         }
 
         this.setTokenBalance(publicKey, tokenId, amount);
-
         //Compute Merkel Root
 
         this.logService.info('Deposit', {
@@ -161,6 +166,8 @@ module.exports = class StateManager {
             from: publicKey,
             amount: amount,
         });
+
+        return true;
     }
 
 }
